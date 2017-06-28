@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # lock
-bindsym $mod+Shift+x exec i3lock --color 475263
+bindsym $mod+Shift+x exec i3lock --color 4F7199
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -42,6 +42,10 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec dmenu_run
 exec_always compton -f
 bindsym $mod+d exec rofi -show run -width 800 -padding 50
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -74,7 +78,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+m fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -180,21 +184,20 @@ bar {
 
 # Apps and settings
 bindsym $mod+b exec firefox
-bindsym $mod+c exec google-chrome
-bindsym $mod+f exec caja
+bindsym $mod+c exec caja
 bindsym $mod+x exec spotify
-bindsym $mod+g exec pluma
+bindsym $mod+g exec geany
+bindsym $mod+shift+s exec spotify
 
 # startup apps
-exec --no-startup-id xrandr --output HDMI-0 --left-of DP-1pactl  --rotate right
-exec --no-startup-id nm-applet
-# exec --no-startup-id conky
+exec --no-startup-id xrandr --output DP-1 --left-of HDMI-0  --rotate right
+exec --no-startup-id mate-volume-control-applet
 
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 10 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 10 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 10 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
